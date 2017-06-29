@@ -4,6 +4,17 @@ simple python script for calculating ROI in crypto, with bar and interactive for
 comes in two formats: coin.py, the interactive program, and coinBar.py, for use with i3blocks or any status bar that can implement python scripts
 
 ### running the program
+
+###### dependencies:
+requires python 3 with the following installed:
+	urllib
+	json
+	csv
+	sys
+
+(most of these should be stock)
+if not, run ****pip3 install urllib json csv sys* (may need root access)
+
 the interactive version, coin.py, requires a values.csv file in the same directory
 
 use the (e)nter function to provide values - intended for first launch only
