@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 #bitcoin & ethereum ticker
 #designed for status bar, i.e., i3blocks
 #author: maps
@@ -26,7 +25,7 @@ with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=ETHUSD"
 	data = json.loads(url.read().decode())
 	ethPrice = data['result']['XETHZUSD']['l'][0]
 	ethPrice = float(ethPrice)
-#find current value of coin 
+#find current value of coin
 btcValue = btcAmount * btcPrice
 ethValue = ethAmount * ethPrice
 totalValue = btcValue + ethValue
