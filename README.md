@@ -10,7 +10,9 @@ program currently accepts BTC and ETH and uses the Kraken API
 
 feel free to modify
 if you find this useful and are feeling generous:
+
 btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
+
 eth: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
 
 example in i3bar:
