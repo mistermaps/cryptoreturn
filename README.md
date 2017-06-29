@@ -8,4 +8,4 @@ interactive version coming soon
 feel free to modify
 
 example in i3bar:
-![Screenshot](cryptoreturn/barExample.png)
+![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/barExample.png)
