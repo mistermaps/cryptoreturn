@@ -8,4 +8,4 @@ interactive version coming soon
 feel free to modify
 
 example in i3bar:
-![Screenshot](exampleBar.png)
+![Screenshot](cryptoreturn/barExample.png)
