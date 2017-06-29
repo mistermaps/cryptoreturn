@@ -12,9 +12,12 @@ use the (c)heck function to calculate ROI at current market prices
 
 #### to do:
 program does not presently loop so must be launched to update values: update so program loops through main function and quits on user command
+
 program currently only accepts BTC and ETH and uses the Kraken API: long term, implement popular currencies and exchanges (antshares are next.)
+
 program currently only allows you to aggregate coin & cost: implement ability to lower currency amount and add profit
 
+bar version runs off of values hardcoded into source: fork bar to run off of .csv
 
 program by maps, feel free to modify
 product released under the GPL 3.0 or later versions license
