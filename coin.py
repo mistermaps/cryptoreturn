@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 #bitcoin & ethereum ROI calculator
+#author: maps
+#feel free to modify
 
 import urllib.request
 import json
@@ -36,13 +38,11 @@ def enter():
 		f.write('ETH:' + str(ethAmount) + ',')
 		ethTotal = float(input('Please enter the total amount spent on ETH:\n$'))
 		f.write('ETH cost:' + str(ethTotal) + ',')
-
 		print('Loading...')
-		#print('Program has to exit to update CSV file.')
-		#exit()
-	elif self == 'no' or sel == 'n':
+	elif sel == 'no' or sel == 'n':
 		print('Loading...')
 
+#function for determining positive or negative ROI
 def eval(a, b):
 	global sym 
 	if a > b:
@@ -50,6 +50,7 @@ def eval(a, b):
 	elif a < b:
 		return '-'
 
+#reads from file (badly) and awkwardly converts them to useful fields
 def read():
 	#This is super ugly and hacked together because I couldn't get regex to work
 	global ethAmount
@@ -57,11 +58,13 @@ def read():
 	global ethTotal
 	global btcTotal
 	parse()
+	#pls no bulli
 	btcAmount = float(values[1].replace("'","").replace('"','').strip())
 	btcTotal = float(values[3].replace("'","").replace('"','').strip())
 	ethAmount = float(values[5].replace("'","").replace('"','').strip())
 	ethTotal = float(values[7].replace("'","").replace('"','').strip())
 
+#function for updating .csv file
 def update():
 	read()
 	global ethAmount
@@ -82,58 +85,65 @@ def update():
 	ethTotal += addEthTotal
 	f.write('ETH:' + str(ethTotal) + ',')
 
+#function to get current price from API
+def getPrices():
+	#currently uses kraken
+	#easily modified to have other exchanges, or other currencies
+	global btcPrice
+	global ethPrice
+	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=XBTUSD") as url:
+		data = json.loads(url.read().decode())
+		btcPrice = data['result']['XXBTZUSD']['l'][0]
+		btcPrice = float(btcPrice)
+	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=ETHUSD") as url:
+		data = json.loads(url.read().decode())
+		ethPrice = data['result']['XETHZUSD']['l'][0]
+		ethPrice = float(ethPrice)
 
-print('Welcome to CryptoReturn, the Crypto ROI calculator.')
-print('CryptoReturn uses the values.csv file for its calculations.')
-print("Use 'Enter' to enter in these values upon first use.")
-print("Once you\'ve entered the initial values, you can use 'Update' to add any additional investments.")
-print("Select 'Check' to calculate ROI.")
-print('After any of these options, the program will calculate your ROI.')
-sel = input('Please select:\n\t(E)nter\n\t(U)pdate\n\t(C)heck\n').lower()
-if sel == 'check' or sel == 'c':
-	print('Loading...')
-elif sel == 'update' or sel == 'u':
-	update()
-	print('Loading...')
-elif sel == 'enter' or sel == 'e':
-	enter()
+#calculate and display ROI and inputted values
+def roi():
+	btcValue = btcAmount * btcPrice
+	ethValue = ethAmount * ethPrice
+	totalValue = btcValue + ethValue
+	totalSpent = ethTotal + btcTotal
+	print('Current Bitcoin Price: \n\t\t\t$%.2f' % btcPrice)
+	print('Current BTC holdings: \n\t\t\t%.7f' % btcAmount)
+	print('Total Bitcoin Spending: \n\t\t\t$%.2f' % btcTotal)
+	print('Current Value: \n\t\t\t$%.2f' % btcValue)
+	change = eval(btcValue, btcTotal)
+	print('Current BTC ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(btcTotal - btcValue))
+	print()
+	print('Current Ether Price: \n\t\t\t$%.2f' % ethPrice)
+	print('Current ETH holdings: \n\t\t\t%.7f' % ethAmount)
+	print('Total Ether Spending : \n\t\t\t$%.2f' % ethTotal)
+	print('Current Value: \n\t\t\t$%.2f' % ethValue)
+	change = eval(ethValue, ethTotal)
+	print('Current ETH ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(ethTotal - ethValue))
+	print()
+	print('Total Spent: \n\t\t\t$%.2f' % totalSpent)
+	print('Current Combined Value: \n\t\t\t$%.2f' % totalValue)
+	change = eval(totalValue, totalSpent)
+	print('Current total ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(totalSpent - totalValue))		
 
-
-#currently uses kraken
-#easily modified to have other exchanges, or other currencies
-with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=XBTUSD") as url:
-	data = json.loads(url.read().decode())
-	btcPrice = data['result']['XXBTZUSD']['l'][0]
-	btcPrice = float(btcPrice)
-with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=ETHUSD") as url:
-	data = json.loads(url.read().decode())
-	ethPrice = data['result']['XETHZUSD']['l'][0]
-	ethPrice = float(ethPrice)
-#find current value of coin 
-read()
-parse()
-btcValue = btcAmount * btcPrice
-ethValue = ethAmount * ethPrice
-totalValue = btcValue + ethValue
-totalSpent = ethTotal + btcTotal
-
-print('Current Bitcoin Price: \n\t\t\t$%.2f' % btcPrice)
-print('Current BTC holdings: \n\t\t\t%.7f' % btcAmount)
-print('Total Bitcoin Spending: \n\t\t\t$%.2f' % btcTotal)
-print('Current Value: \n\t\t\t$%.2f' % btcValue)
-change = eval(btcValue, btcTotal)
-print('Current BTC ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(btcTotal - btcValue))
-print()
-print('Current Ether Price: \n\t\t\t$%.2f' % ethPrice)
-print('Current ETH holdings: \n\t\t\t%.7f' % ethAmount)
-print('Total Ether Spending : \n\t\t\t$%.2f' % ethTotal)
-print('Current Value: \n\t\t\t$%.2f' % ethValue)
-change = eval(ethValue, ethTotal)
-print('Current ETH ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(ethTotal - ethValue))
-print()
-
-print('Total Spent: \n\t\t\t$%.2f' % totalSpent)
-print('Current Combined Value of Currencies: \n\t\t\t$%.2f' % totalValue)
-change = eval(totalValue, totalSpent)
-print('Current total ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(totalSpent - totalValue))
-#print('BTC $:  %.2f' % btcValue + ' ETH $: %.2f' % ethValue + ' ROI: %s' % change + '%.2f' % abs(totalSpent - totalValue))
+#begin user interactions
+def main():
+	print('Welcome to CryptoReturn, the Crypto ROI calculator.')
+	print('CryptoReturn uses the values.csv file for its calculations.')
+	print("Use 'Enter' to enter in these values upon first use.")
+	print("Once you\'ve entered the initial values, you can use 'Update' to add any additional investments.")
+	print("Select 'Check' to calculate ROI.")
+	print('After any of these options, the program will calculate your ROI.')
+	sel = input('Please select:\n\t(E)nter\n\t(U)pdate\n\t(C)heck\n').lower()
+	if sel == 'check' or sel == 'c':
+		print('Loading...')
+	elif sel == 'update' or sel == 'u':
+		update()
+		print('Loading...')
+	elif sel == 'enter' or sel == 'e':
+		enter()
+	read()
+	parse()
+	getPrices()
+	roi()
+	
+main()
