@@ -74,21 +74,40 @@ def update():
 	global ethTotal
 	global btcTotal
 	f = open('values.csv', 'r+')
-	addBtcAmount = float(input('How much BTC are you adding?\n'))
-	if addBtcAmount > 0:
-		btcAmount += addBtcAmount
-		f.write('ETH:' + str(btcAmount) + ',')
-		addBtcTotal = float(input('How much did you spend to add this amount?\n'))
-		btcTotal += addBtcTotal
-		f.write('ETH:' + str(btcTotal) + ',')
-	addEthAmount = float(input('How much ETH are you adding?\n'))
-	if addEthAmount > 0:
-		ethAmount += addEthAmount
-		f.write('ETH:' + str(ethAmount) + ',')
-		addEthTotal = float(input('How much did you spend to add this amount?\n'))
-		ethTotal += addEthTotal
-		f.write('ETH:' + str(ethTotal) + ',')
-
+	sel = input('(B)uy or (s)ell BTC?\n').lower()
+	if sel == 'buy' or sel == 'b':
+		addBtcAmount = float(input('How much BTC are you adding?\n'))
+		if addBtcAmount > 0:
+			btcAmount += addBtcAmount
+			f.write('BTC:' + str(btcAmount) + ',')
+			addBtcTotal = float(input('How much did you spend to add this amount?\n'))
+			btcTotal += addBtcTotal
+			f.write('BTC:' + str(btcTotal) + ',')
+	if sel == 'sell' or 's':
+		addBtcAmount = float(input('How much BTC did you sell?\n'))
+		if addBtcAmount > 0:
+			btcAmount -= addBtcAmount
+			f.write('BTC:' + str(btcAmount) + ',')
+			addBtcTotal = float(input('At what price did you sell?\n'))
+			btcTotal -= addBtcTotal
+			f.write('BTC:' + str(btcTotal) + ',')
+	sel = input('(B)uy or (s)ell ETH?\n').lower()
+	if sel == 'buy' or sel == 'b':
+		addEthAmount = float(input('How much ETH are you adding?\n'))
+		if addEthAmount > 0:
+			ethAmount += addEthAmount
+			f.write('ETH:' + str(ethAmount) + ',')
+			addEthTotal = float(input('How much did you spend to add this amount?\n'))
+			ethTotal += addEthTotal
+			f.write('ETH:' + str(ethTotal) + ',')
+	if sel == 'sell' or 's':
+		addEthAmount = float(input('How much ETH did you sell?\n'))
+		if addEthAmount > 0:
+			ethAmount -= addEthAmount
+			f.write('ETH:' + str(ethAmount) + ',')
+			addEthTotal = float(input('At what price did you sell?\n'))
+			ethTotal -= addEthTotal
+			f.write('ETH:' + str(ethTotal) + ',')	
 #function to get current price from API
 def getPrices():
 	#currently uses kraken
@@ -124,7 +143,7 @@ def roi():
 	change = eval(ethValue, ethTotal)
 	print('Current ETH ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(ethTotal - ethValue))
 	print()
-	print('Total Spent: \n\t\t\t$%.2f' % totalSpent)
+	print('Total Spent minus profit: \n\t\t\t$%.2f' % totalSpent)
 	print('Current Combined Value: \n\t\t\t$%.2f' % totalValue)
 	change = eval(totalValue, totalSpent)
 	print('Current total ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(totalSpent - totalValue))		
