@@ -31,13 +31,15 @@ def enter():
 		with open('values.csv', 'w'): pass
 		f = open('values.csv','w')
 		btcAmount = float(input('Please enter the exact amount of BTC held:\n'))
-		f.write('BTC:' + str(btcAmount) + ',')
-		btcTotal = float(input('Please enter the total amount spent on BTC:\n$'))
-		f.write('BTC Cost:' + str(btcTotal) + ',')
+		if btcAmount > 0:
+			f.write('BTC:' + str(btcAmount) + ',')
+			btcTotal = float(input('Please enter the total amount spent on BTC:\n$'))
+			f.write('BTC Cost:' + str(btcTotal) + ',')
 		ethAmount = float(input('Please enter the exact amount of ETH held:\n'))
-		f.write('ETH:' + str(ethAmount) + ',')
-		ethTotal = float(input('Please enter the total amount spent on ETH:\n$'))
-		f.write('ETH cost:' + str(ethTotal) + ',')
+		if ethAmount > 0:
+			f.write('ETH:' + str(ethAmount) + ',')
+			ethTotal = float(input('Please enter the total amount spent on ETH:\n$'))
+			f.write('ETH cost:' + str(ethTotal) + ',')
 		print('Loading...')
 	elif sel == 'no' or sel == 'n':
 		print('Loading...')
@@ -73,17 +75,19 @@ def update():
 	global btcTotal
 	f = open('values.csv', 'r+')
 	addBtcAmount = float(input('How much BTC are you adding?\n'))
-	btcAmount += addBtcAmount
-	f.write('ETH:' + str(btcAmount) + ',')
-	addBtcTotal = float(input('How much did you spend to add this amount?\n'))
-	btcTotal += addBtcTotal
-	f.write('ETH:' + str(btcTotal) + ',')
+	if addBtcAmount > 0:
+		btcAmount += addBtcAmount
+		f.write('ETH:' + str(btcAmount) + ',')
+		addBtcTotal = float(input('How much did you spend to add this amount?\n'))
+		btcTotal += addBtcTotal
+		f.write('ETH:' + str(btcTotal) + ',')
 	addEthAmount = float(input('How much ETH are you adding?\n'))
-	ethAmount += addEthAmount
-	f.write('ETH:' + str(ethAmount) + ',')
-	addEthTotal = float(input('How much did you spend to add this amount?\n'))
-	ethTotal += addEthTotal
-	f.write('ETH:' + str(ethTotal) + ',')
+	if addEthAmount > 0:
+		ethAmount += addEthAmount
+		f.write('ETH:' + str(ethAmount) + ',')
+		addEthTotal = float(input('How much did you spend to add this amount?\n'))
+		ethTotal += addEthTotal
+		f.write('ETH:' + str(ethTotal) + ',')
 
 #function to get current price from API
 def getPrices():
@@ -106,7 +110,7 @@ def roi():
 	ethValue = ethAmount * ethPrice
 	totalValue = btcValue + ethValue
 	totalSpent = ethTotal + btcTotal
-	print('Current Bitcoin Price: \n\t\t\t$%.2f' % btcPrice)
+	print('\n\nCurrent Bitcoin Price: \n\t\t\t$%.2f' % btcPrice)
 	print('Current BTC holdings: \n\t\t\t%.7f' % btcAmount)
 	print('Total Bitcoin Spending: \n\t\t\t$%.2f' % btcTotal)
 	print('Current Value: \n\t\t\t$%.2f' % btcValue)
@@ -130,9 +134,9 @@ def main():
 	print('Welcome to CryptoReturn, the Crypto ROI calculator.')
 	print('CryptoReturn uses the values.csv file for its calculations.')
 	print("Use 'Enter' to enter in these values upon first use.")
-	print("Once you\'ve entered the initial values, you can use 'Update' to add any additional investments.")
+	print("Use 'Update' to add any additional investments, if you've already entered initial holdings in.")
 	print("Select 'Check' to calculate ROI.")
-	print('After any of these options, the program will calculate your ROI.')
+	print('After any of these options, the program will calculate your ROI.\n')
 	sel = input('Please select:\n\t(E)nter\n\t(U)pdate\n\t(C)heck\n').lower()
 	if sel == 'check' or sel == 'c':
 		print('Loading...')
