@@ -46,7 +46,7 @@ def enter():
 
 #function for determining positive or negative ROI
 def eval(a, b):
-	global sym 
+	global sym
 	if a > b:
 		return '+'
 	elif a < b:
@@ -107,7 +107,7 @@ def update():
 			f.write('ETH:' + str(ethAmount) + ',')
 			addEthTotal = float(input('At what price did you sell?\n'))
 			ethTotal -= addEthTotal
-			f.write('ETH:' + str(ethTotal) + ',')	
+			f.write('ETH:' + str(ethTotal) + ',')
 #function to get current price from API
 def getPrices():
 	#currently uses kraken
@@ -116,15 +116,16 @@ def getPrices():
 	global ethPrice
 	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=XBTUSD") as url:
 		data = json.loads(url.read().decode())
-		btcPrice = data['result']['XXBTZUSD']['l'][0]
+		btcPrice = data['result']['XXBTZUSD']['b'][0]
 		btcPrice = float(btcPrice)
 	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=ETHUSD") as url:
 		data = json.loads(url.read().decode())
-		ethPrice = data['result']['XETHZUSD']['l'][0]
+		ethPrice = data['result']['XETHZUSD']['b'][0]
 		ethPrice = float(ethPrice)
 
 #calculate and display ROI and inputted values
 def roi():
+	getPrices()
 	btcValue = btcAmount * btcPrice
 	ethValue = ethAmount * ethPrice
 	totalValue = btcValue + ethValue
@@ -146,7 +147,7 @@ def roi():
 	print('Total Spent minus profit: \n\t\t\t$%.2f' % totalSpent)
 	print('Current Combined Value: \n\t\t\t$%.2f' % totalValue)
 	change = eval(totalValue, totalSpent)
-	print('Current total ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(totalSpent - totalValue))		
+	print('Current total ROI: \n\t\t\t%s' % str(change) + '$%.2f' % abs(totalSpent - totalValue))
 
 #begin user interactions
 def main():
@@ -166,7 +167,7 @@ def main():
 		enter()
 	read()
 	parse()
-	getPrices()
+	#getPrices()
 	roi()
-	
+
 main()
