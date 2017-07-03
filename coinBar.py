@@ -13,7 +13,7 @@ import sys
 def parse():
 	global values
 	csv.register_dialect('crypto', delimiter=',')
-	with open('values.csv', 'r+') as f:
+	with open('/home/maps/.i3/values.csv', 'r+') as f:
 		reader = csv.reader(f, dialect='crypto')
 		values = []
 		for row in reader:
@@ -35,11 +35,11 @@ def getPrices():
 	global ethPrice
 	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=XBTUSD") as url:
 		data = json.loads(url.read().decode())
-		btcPrice = data['result']['XXBTZUSD']['l'][0]
+		btcPrice = data['result']['XXBTZUSD']['b'][0]
 		btcPrice = float(btcPrice)
 	with urllib.request.urlopen("https://api.kraken.com/0/public/Ticker?pair=ETHUSD") as url:
 		data = json.loads(url.read().decode())
-		ethPrice = data['result']['XETHZUSD']['l'][0]
+		ethPrice = data['result']['XETHZUSD']['b'][0]
 		ethPrice = float(ethPrice)
 
 def read():
