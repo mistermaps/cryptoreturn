@@ -4,8 +4,17 @@ simple python script for calculating ROI in crypto, with bar and interactive for
 comes in two formats: coin.py, the interactive program, and coinBar.py, for use with i3blocks or any status bar that can implement python scripts
 
 ### running the program
+run coin.py and use 'enter' option to populate values.csv file
 
-###### dependencies:
+###### for coinBar.py implementation in i3 blocks:
+run coin.py as above, then either copy 'coinBar.py' & 'values.csv' into ~/.i3, then edit i3blocks.conf to run coinBar.py
+
+alternatively, you can edit coinBar.py to point specifically to the cryptoreturn repo
+
+###### for other status bars
+
+
+### dependencies:
 requires python 3 with the following installed:
 	urllib
 	json
@@ -21,7 +30,7 @@ use the (e)nter function to provide values - intended for first launch only
 use the (u)pdate function to update values such as currency purchased (sell feature not yet implemented)
 use the (c)heck function to calculate ROI at current market prices
 
-#### to do:
+### to do:
 program does not presently loop so must be launched to update values: update so program loops through main function and quits on user command
 
 program currently only accepts BTC and ETH and uses the Kraken API: long term, implement popular currencies and exchanges (antshares are next.)
