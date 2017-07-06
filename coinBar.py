@@ -17,7 +17,7 @@ def parse():
 	#both this file and the values.csv file within the .i3 directory created by i3blocks
 	#the .i3blocks.conf file specifically pointing the git repo
 	#values.csv must be populated first by running coin.py
-		with open('~/.i3/values.csv', 'r+') as f:
+	with open('/home/maps/.i3/values.csv', 'r+') as f:
 		reader = csv.reader(f, dialect='crypto')
 		values = []
 		for row in reader:
