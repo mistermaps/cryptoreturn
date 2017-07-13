@@ -1,5 +1,6 @@
 # cryptoreturn
 simple python scripts for calculating ROI in crypto, with interactive main program, as well a status bar format
+![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/images/crDemo3.png)
 repo also includes scripts (intended for status bars) for monitoring four major currencies (BTC, ETH, GNT, ANS)
 
 program by maps, feel free to modify
@@ -8,6 +9,8 @@ product released under the GPL 3.0 or later versions license
 run cryptoreturn.py and follow the onscreen prompts
 both cryptoreturn and coinbar require coins.py and values.csv in the same directory to function
 comes shipped with a zeroed values.csv
+
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crDemo1.png)
 
 use cryptoreturn's 'enter' function for first time use - to fill out values.csv for later/coinbar use - and 'update' for any additional purchases/sales
 use 'check' function to check on ROI
@@ -40,3 +43,14 @@ if not, run ****pip3 install urllib json csv sys* (may need root access)
 btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
 
 eth: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
+
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crDemo1.png)
+
+example of various bar i3bocks formats:
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarCoinROI.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarAll.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarAmountValue.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarPerCoinValue.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarPerCoinROI.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarEverything.png)
+![Screenshot](https://github.com/mistermaps/cryptoreturn/images/crBarTotalROI.png)
