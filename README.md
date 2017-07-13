@@ -7,10 +7,13 @@ simple python scripts for calculating ROI in crypto, with interactive main progr
 repo also includes scripts (intended for status bars) for monitoring four major currencies (BTC, ETH, GNT, ANS)
 
 program by maps, feel free to modify
+
 product released under the GPL 3.0 or later versions license
 ### running the program
 run cryptoreturn.py and follow the onscreen prompts
+
 both cryptoreturn and coinbar require coins.py and values.csv in the same directory to function
+
 comes shipped with a zeroed values.csv
 
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crDemo2.png)
@@ -33,14 +36,14 @@ requires python 3 with the following installed:
 	csv
 
 (most of these should be stock)
-if not, run ****pip3 install urllib json csv sys* (may need root access)
+if not, run '***pip3 install urllib json csv' (may need root access)
 
 ### to do:
 1) add more currencies and exchanges
 	- potentially allow user to pick from multiple exchanges
 2) improve update function
 3) continue beautifying, streamlining, and improving
-
+4) rewrite program to be more Pythonic and less garbage
 ### if you find this useful and are feeling generous:
 
 btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
