@@ -18,6 +18,7 @@ from coins import Coins
 coinOpt = ['Bitcoin','Ether','Golem','Antshares']
 coinSel = []
 coinInvest = [False for i in range(len(coinOpt))]
+USER = os.path.expanduser('~')
 
 class spinner(threading.Thread):
     
@@ -60,7 +61,6 @@ def load(func):
 #function that reads from file an populates array with contents
 def parse():
 	global values
-	USER = os.path.expanduser('~')
 	csv.register_dialect('crypto', delimiter=',')
 	#regular config is for Linux, uncomment below for windows; if the program breaks, update the path to reflect where the repo is
 	
@@ -83,9 +83,9 @@ def enter():
 	if sel == 'yes' or sel == 'y':
 		clear()
 		#erases the file
-		with open('values.csv', 'w'): pass
+		with open(USER + '/cryptoreturn/values.csv','w'): pass
 		
-		f = open('values.csv','w')
+		f = open(USER + '/cryptoreturn/values.csv','r+')
 		print("This program currently supports: ")
 		#list coins currently built into program
 		for i in range(len(coinOpt)):
@@ -166,7 +166,8 @@ def eval(a, b):
 		return '+'
 	elif a < b:
 		return '-'
-
+	if not a:
+		return ''
 
 def read():
 	parse()
@@ -191,7 +192,7 @@ def update():
 	gntTotal = read.gntTotal
 	ansAmount = read.ansAmount
 	ansTotal = read.ansTotal
-	f = open('values.csv', 'r+')
+	f = open(USER + '/cryptoreturn/values.csv','r+')
 	for i in range(len(coinOpt)):
 			coinSel.insert(i, input("Update: " + coinOpt[i] + "? (Y)es\n").lower())
 			if coinSel[i] == 'y' or coinSel[i] == 'yes':
