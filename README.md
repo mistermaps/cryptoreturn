@@ -1,7 +1,7 @@
 # cryptoreturn
 simple python scripts for calculating ROI in crypto, with interactive main program, as well a status bar format
 
-![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crDemo1.png)
+![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crTitle.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crDemo3.png)
 
 repo also includes scripts (intended for status bars) for monitoring four major currencies (BTC, ETH, GNT, ANS)
@@ -9,6 +9,11 @@ repo also includes scripts (intended for status bars) for monitoring four major 
 program by maps, feel free to modify
 
 product released under the GPL 3.0 or later versions license
+
+coins supported as of version 2.0 7/24/17:
+Bitcoin, Ethereum, Litecoin, Golem, Neo, Stratis, Ripple, OmiseGO, Syndicate
+
+note: coinbar implementation still needing update; currently only supports Bitcoin, Ethereum, Golem, and NEO
 ### running the program
 run cryptoreturn.py and follow the onscreen prompts
 
@@ -21,22 +26,12 @@ comes shipped with a zeroed values.csv
 use cryptoreturn's 'enter' function for first time use - to fill out values.csv for later/coinbar use - and 'update' for any additional purchases/sales
 use 'check' function to check on ROI
 
-
 ###### for coinBar.py implementation in i3 blocks:
 easiest use is to point i3blocks.conf (or equivalent) to /cryptoreturn/ directory; see attached example i3blocks.conf
 
 alternatively, once the .csv file has been filled out, one could copy the files to the .i3 directory
 ###### for other status bars
 as of yet untested, but should work with any python friendly status bar along similar lines
-
-### dependencies:
-requires python 3 with the following installed:
-	urllib
-	json
-	csv
-
-(most of these should be stock)
-if not, run '***pip3 install urllib json csv' (may need root access)
 
 ### to do:
 1) add more currencies and exchanges
