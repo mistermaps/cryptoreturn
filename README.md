@@ -46,9 +46,10 @@ example of various bar i3bocks formats, with coinscripts included:
 
 ### to do:
 as of v2.0:
-- rewrite coinBar to 
+- rewrite coinBar to make it current with main program
+- add CSV encryption 
 - add more currencies and exchanges
-- create configuration menu: allow user to pick from preferred exchange, set path manually, toggle display options
+- create configuration menu: allow user to pick from preferred exchange, set path manually, toggle display options, encryption
 - add argument parser to run program from command line
 - continue beautifying, streamlining, and improving; ensure conventionality in source
 - continuing rewriting program to be more Pythonic as knowledge grows
