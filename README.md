@@ -29,21 +29,10 @@ use 'check' function to check on ROI
 ###### for coinBar.py implementation in i3 blocks:
 easiest use is to point i3blocks.conf (or equivalent) to /cryptoreturn/ directory; see attached example i3blocks.conf
 
-alternatively, once the .csv file has been filled out, one could copy the files to the .i3 directory
+alternatively, once the .csv file has been filled out, copy the files to the .i3 directory and uncomment that path in source
+
 ###### for other status bars
 as of yet untested, but should work with any python friendly status bar along similar lines
-
-### to do:
-1) add more currencies and exchanges
-	- potentially allow user to pick from multiple exchanges
-2) improve update function
-3) continue beautifying, streamlining, and improving
-4) rewrite program to be more Pythonic and less garbage
-### if you find this useful and are feeling generous:
-
-btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
-
-eth: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
 
 example of various bar i3bocks formats, with coinscripts included:
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarCoinROI.png)
@@ -53,3 +42,19 @@ example of various bar i3bocks formats, with coinscripts included:
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarPerCoinROI.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarEverything.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarTotalROI.png)
+
+### to do:
+as of v2.0:
+- rewrite coinBar to 
+- add more currencies and exchanges
+- create configuration menu: allow user to pick from preferred exchange, set path manually, toggle display options
+- add argument parser to run program from command line
+- continue beautifying, streamlining, and improving; ensure conventionality in source
+- continuing rewriting program to be more Pythonic as knowledge grows
+### if you find this useful and are feeling generous:
+
+btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
+
+eth: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
+
+
