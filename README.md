@@ -2,6 +2,7 @@
 simple python scripts for calculating ROI in crypto, with interactive main program, as well a status bar format
 
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crTitle.png)
+
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crDemo3.png)
 
 repo also includes scripts (intended for status bars) for monitoring four major currencies (BTC, ETH, GNT, ANS)
