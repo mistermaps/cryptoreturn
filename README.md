@@ -42,14 +42,21 @@ example of various bar i3bocks formats, with coinscripts included:
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarPerCoinValue.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarPerCoinROI.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarEverything.png)
-![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarTotalROI.png)
+![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarTotalROI.We're reaching tagging levels that shouldn't even be possiblepng)
 
 ### to do:
 as of v2.0:
 - rewrite coinBar to make it current with main program
-- add CSV encryption 
-- add more currencies and exchanges
+- create wrapper to select from coin database
++ wrapper: references external database of coins, receives input in terms of display options
+- rewrite program to remove hardcoding of coins; select from coin database
+- add display of price relative to bitcoin
+- display percent changes (daily)
+- add more currencies and exchanges; remove SNYX, add BCH, IOTA, TenX, Gnosis, Augur, DASH, EOS, Decred, Fluence, CIVIC, Verge, others
 - create configuration menu: allow user to pick from preferred exchange, set path manually, toggle display options, encryption
+- add CSV encryption
+- display selectable list of currencies
+- add about menu with wallet addresses
 - add argument parser to run program from command line
 - continue beautifying, streamlining, and improving; ensure conventionality in source
 - continuing rewriting program to be more Pythonic as knowledge grows
@@ -58,5 +65,7 @@ as of v2.0:
 btc: 12uqmJYWVUFQXB3kvKRRd69mVPK9mC8qJa
 
 eth: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
+
+gnt: 0x3dB53F7A2fb714A2Df4E94c3E8e00342DB79aec0
 
 
