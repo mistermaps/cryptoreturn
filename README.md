@@ -42,7 +42,7 @@ example of various bar i3bocks formats, with coinscripts included:
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarPerCoinValue.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarPerCoinROI.png)
 ![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarEverything.png)
-![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarTotalROI.We're reaching tagging levels that shouldn't even be possiblepng)
+![Screenshot](https://raw.githubusercontent.com/mistermaps/cryptoreturn/master/images/crBarTotalROI.png)
 
 ### to do:
 as of v2.0:
